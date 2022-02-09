@@ -59,7 +59,7 @@ DECLARE	Esiste INT DEFAULT 0;
 	END IF;
 
 	RETURN Retval;
-  
+
 END;
 
 CREATE FUNCTION OPX_RecTabnum(Dtb char(10),Codnum char(10),Recnum int)
@@ -167,4 +167,13 @@ DECLARE Msk CHAR(10) DEFAULT "";
 
   RETURN Retval;
 
+END;
+
+CREATE FUNCTION GO_TestCommit(Dtb CHAR(10),Codnum CHAR(10),Datarf DATE,Tiplck INT)
+RETURNS INT
+BEGIN
+
+  DECLARE Retval INT DEFAULT 0;
+
+  RETURN Retval;
 END;
