@@ -1,3 +1,4 @@
+-- Moduli di gestione delle numerazioni
 DROP FUNCTION IF EXISTS OPX_GetTabnum;
 DROP FUNCTION IF EXISTS OPX_RecTabnum;
 DROP FUNCTION IF EXISTS OPX_GetTabnumData;
