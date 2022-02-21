@@ -11,12 +11,12 @@ DECLARE Retval TEXT DEFAULT "";
 
   CASE Datast
     WHEN 'lstagl' THEN
-      SELECT CONCAT('{',IFNULL(GROUP_CONCAT(CONCAT('"',taglia,'":',concat('[',quanti,',',prezzo,']'))),''),'}') into @Retval
+      SELECT CONCAT('{',IFNULL(GROUP_CONCAT(CONCAT('"',taglia,'":',concat('[',quanti,',',prezzo,']'))),''),'}') into Retval
       FROM lstagl
       WHERE lstagl.idrife = Numrif
       and lstagl.tprife = Tiprif;
     WHEN 'ortagl' THEN
-      SELECT CONCAT('{',IFNULL(GROUP_CONCAT(CONCAT('"',taglia,'":',concat('[',quanti,',',prezzo,']'))),''),'}') into @Retval
+      SELECT CONCAT('{',IFNULL(GROUP_CONCAT(CONCAT('"',taglia,'":',concat('[',quanti,',',prezzo,']'))),''),'}') into Retval
       FROM ortagl
       WHERE ortagl.idrife = Numrif
       and ortagl.tprife = Tiprif;
@@ -34,7 +34,7 @@ DECLARE Retval TEXT DEFAULT "";
 
   CASE Datast
     WHEN 'orasso' THEN
-      SELECT CONCAT('{',IFNULL(GROUP_CONCAT(CONCAT('"',idasso,'":"',qtasso,'"')),''),'}')
+      SELECT CONCAT('{',IFNULL(GROUP_CONCAT(CONCAT('"',idasso,'":"',qtasso,'"')),''),'}') INTO Retval
       FROM orasso
       where orasso.idrord = Numrif;
   END CASE;
