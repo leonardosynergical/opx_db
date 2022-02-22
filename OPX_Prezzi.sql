@@ -1,5 +1,6 @@
 -- Moduli di gestione delle numerazioni
 DROP FUNCTION IF EXISTS OPX_GetJsonItemPrice;
+DROP FUNCTION IF EXISTS OPX_ImpNet;
 delimiter |
 
 CREATE FUNCTION OPX_GetJsonItemPrice(Nulist INT,Nulisa INT, Cdarti CHAR(30),Cdstag CHAR(4),Cdassl CHAR(10),Cdumco CHAR(10),Datrif DATE,Quanti DOUBLE)
@@ -90,4 +91,23 @@ DECLARE Retval TEXT DEFAULT "";
 
 END;
 
+CREATE FUNCTION OPX_ImpNet(Quanti DOUBLE, Prezzo DOUBLE, Scont1 DOUBLE, Scont2 DOUBLE, Scont3 DOUBLE, Scont4 DOUBLE, Scont5 DOUBLE, Scpaga DOUBLE, Sccass DOUBLE, Cambio DOUBLE, DecImp SMALLINT)
+RETURNS DOUBLE
+BEGIN
+
+DECLARE Prezzou DOUBLE DEFAULT 0.0;
+
+	SET Prezzou = IFNULL(Prezzo,0) * (1-IFNULL(Scont1,0)/100) * (1-IFNULL(Scont2,0)/100) * (1-IFNULL(Scont3,0)/100) * (1-IFNULL(Scont4,0)/100) * (1-IFNULL(Scont5,0)/100) * (1-IFNULL(Scpaga,0)/100) * (1-IFNULL(Sccass,0)/100);
+
+	IF ( IFNULL(Cambio,1) <> 1 ) THEN
+		SET Prezzou = ROUND((Prezzou / Cambio),5);
+	ELSE
+		SET Prezzou = ROUND(Prezzou,5);
+	END IF;
+
+	SET Prezzou = ROUND((Prezzou * IFNULL(Quanti,0)),IFNULL(DecImp,2));
+
+	RETURN Prezzou;
+
+END
 |
