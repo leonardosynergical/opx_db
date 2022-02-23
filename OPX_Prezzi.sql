@@ -35,7 +35,7 @@ DECLARE Retval TEXT DEFAULT "";
 				INNER JOIN tipolo tp
           ON tp.cdartn = ar.cdartn
 				LEFT JOIN lsdett la
-          ON la.nulist = 501
+          ON la.nulist = Nulist
           AND la.cdstag IN (Cdstag,'')
           AND la.tpinpu = 'AR'
           AND la.codice = ar.cdarti
@@ -47,13 +47,13 @@ DECLARE Retval TEXT DEFAULT "";
           AND ln.codice = tp.cdartn
           AND la.dtvali <= Datrif
 				LEFT JOIN lsdett aa
-          ON aa.nulist = 0
+          ON aa.nulist = Nulisa
           AND aa.cdstag in (Cdstag,'')
           AND aa.tpinpu = 'AR'
           AND aa.codice = ar.cdarti
           AND la.dtvali <= Datrif
 				LEFT JOIN lsdett an
-          ON an.nulist = 0
+          ON an.nulist = Nulisa
           AND an.cdstag in (Cdstag,'')
           AND an.tpinpu = 'AN'
           AND an.codice = tp.cdartn
