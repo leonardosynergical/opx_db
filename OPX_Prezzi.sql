@@ -45,19 +45,19 @@ DECLARE Retval TEXT DEFAULT "";
           AND ln.cdstag in (Cdstag,'')
           AND ln.tpinpu = 'AN'
           AND ln.codice = tp.cdartn
-          AND la.dtvali <= Datrif
+          AND ln.dtvali <= Datrif
 				LEFT JOIN lsdett aa
           ON aa.nulist = Nulisa
           AND aa.cdstag in (Cdstag,'')
           AND aa.tpinpu = 'AR'
           AND aa.codice = ar.cdarti
-          AND la.dtvali <= Datrif
+          AND aa.dtvali <= Datrif
 				LEFT JOIN lsdett an
           ON an.nulist = Nulisa
           AND an.cdstag in (Cdstag,'')
           AND an.tpinpu = 'AN'
           AND an.codice = tp.cdartn
-          AND la.dtvali <= Datrif
+          AND an.dtvali <= Datrif
 				WHERE
           ar.cdarti = Cdarti
 				ORDER BY
