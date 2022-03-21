@@ -7,6 +7,7 @@ CREATE FUNCTION OPX_GetJsonItemPrice(Nulist INT,Nulisa INT, Cdarti CHAR(30),Cdst
 RETURNS TEXT
 BEGIN
 
+-- Solo per commit
 DECLARE Retval TEXT DEFAULT "";
 
   SELECT
